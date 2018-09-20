@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Area</title>
+
+    <script>
+        function calculateArea(obj) {
+            let {figure,radius,a,b,c} = obj;
+            if (figure == 'square') {
+                return a*a;
+            }
+            if (figure == 'circle') {
+                return Math.PI*radius*radius;
+            }
+            if (figure == 'rectangle') {
+                return a*b;
+            }
+            if (figure == 'triangle') {
+                let p = (a+b+c)/2;
+                return Math.sqrt(p*(p-a)*(p-b)*(p-c));
+            }
+            return undefined;
+        }
+
+        console.log(calculateArea({
+            figure: 'triangle',
+            a: 3,
+            b: 4,
+            c: 5
+        }));
+        console.log(calculateArea({
+            figure: 'circle',
+            radius: 3
+        }));
+        console.log(calculateArea({
+            figure: 'square',
+            a: 5
+        }));
+        console.log(calculateArea({
+            figure: 'rectangle',
+            a: 5,
+            b: 4
+        }));
+        console.log(calculateArea({
+            figure: 'cube',
+            a: 5,
+            b: 4
+        }));
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

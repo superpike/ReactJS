@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Classes</title>
+    <script>
+        class Human {
+            constructor(name, dateOfBirth, age) {
+                this.name = name;
+                this.age = age;
+                this.dateOfBirth = dateOfBirth;
+            }
+
+            displayInfo() {
+                return 'Имя:' + this.name + ', дата рождения:' + this.dateOfBirth + ', возраст:', this.age;
+            }
+        }
+
+        class Employee extends Human {
+            constructor(name, dateOfBirth, age, department, salary) {
+                super(name, dateOfBirth, age);
+                this.department = department;
+                this.salary = salary;
+            }
+
+            displayInfo() {
+                return super.displayInfo() + ', отдел:', this.department + ', з/п:' + this.salary;
+            }
+        }
+
+        class Manager extends Employee {
+            constructor(name, dateOfBirth, age, department, salary) {
+                super(name, dateOfBirth, age);
+                this.department = department;
+                this.salary = salary;
+                this.developers = [];
+            }
+
+            addDeveloper(dev) {
+                this.developers.push(dev);
+            }
+
+            removeDeveloper(dev) {
+                let id = this.developers.indexOf(dev);
+                this.developers.splice(id,1);
+            }
+        }
+
+        class Developer extends Employee {
+            constructor(name, dateOfBirth, age, department, salary, manager) {
+                super(name, dateOfBirth, age);
+                this.department = department;
+                this.salary = salary;
+                this.manager = manager;
+                if (manager) {
+                    manager.addDeveloper(this);
+                }
+            }
+
+            changeManager(manager) {
+                if (this.manager) {
+                    this.manager.removeDeveloper(this);
+                }
+                this.manager = manager;
+                if (manager) {
+                    manager.addDeveloper(this);
+                }
+            }
+        }
+
+        let employees = [];
+        employees.push(new Manager('John','01/01/1970',48,'Sales',1500));
+        employees.push(new Manager('Tom','11/12/1985',32,'HR',1000));
+        employees.push(new Developer('Ivan','07/09/1992',26,'IT',4500,employees[0]));
+        employees.push(new Developer('Maria','10/06/1988',30,'IT',3500));
+        employees.push(new Developer('Jarik','26/02/1980',38,'IT',5500,employees[1]));
+        employees.push(new Developer('Max','16/04/1999',19,'IT',4500,employees[0]));
+
+        console.log(employees);
+
+        employees[5].changeManager(employees[1]);
+        console.log(employees);
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

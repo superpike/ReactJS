@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>generator</title>
+
+    <script>
+        function* generatorPoll() {
+            let answer = prompt('Ваше имя');
+            yield {'name': answer};
+            answer = parseInt(prompt('Ваш возраст'));
+            yield {'age': answer};
+            answer = parseInt(prompt('Желаемая з/п'));
+            yield {'salary': answer};
+            answer = prompt('Ваше хобби');
+            return {'hobby': answer};
+            //return false;
+        }
+
+        let poll = generatorPoll();
+        let userData = {};
+
+        let notEnd = true;
+        do {
+            let step = poll.next();
+            notEnd = !step.done;
+            Object.assign(userData,step.value);
+        } while (notEnd);
+
+        console.log(userData);
+    </script>
+</head>
+<body>
+    
+</body>
+</html>
