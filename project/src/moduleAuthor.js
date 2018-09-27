@@ -1,18 +1,14 @@
 import React from 'react';
 
-export class Author {
-    constructor(name) {
-        this.name = name;
-    }
+class Author extends React.Component {
     render() {
-        return React.createElement('div', {
-            className: "copyright",
-            style: {
-                cursor: "pointer"
-            },
-            onClick: () => alert(new Date().toLocaleTimeString())
-            },
-            "Copyright © 2018. " + this.name);
-            // + ", datetime: " + new Date().toLocaleTimeString());
+        return (
+        <div className="b-footer__copyright">
+            <div className="container" onClick = {() => alert(new Date().toLocaleTimeString())}>
+                "Copyright © 2018. "  {this.props.authorName}
+            </div>
+        </div>);
     }
 }
+
+export default Author;
