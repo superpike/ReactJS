@@ -7,13 +7,13 @@ import Phone from './Phone';
 class Header extends React.Component {
     render() {       
         const menuItems = [
-            {href: "#", title: "Каталог"},
-            {href: "/service", title: "Услуги"},
-            {href: "/delivery", title: "Доставка и оплата"},
-            {href: "/about", title: "О нас"},
-            {href: "/works", title: "Наши работы"},
-            {href: "/rolls", title: "Отзывы"},
-            {href: "/contacts", title: "Контакты"},
+            {href: "#", active:false, title: "Каталог"},
+            {href: "#", active:true, title: "Услуги"},
+            {href: "#", active:false, title: "Доставка и оплата"},
+            {href: "#", active:false, title: "О нас"},
+            {href: "#", active:false, title: "Наши работы"},
+            {href: "#", active:false, title: "Отзывы"},
+            {href: "#", active:false, title: "Контакты"},
         ];
 
         return (

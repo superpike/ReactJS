@@ -4,9 +4,25 @@ import MenuItem from './HeaderMenuItem';
 
 class Menu extends React.Component
 {
+    constructor(props)
+    {
+        super(props);
+        this.clickOnItem = this.clickOnItem.bind(this);
+        //Определяем состояние компонента
+        this.state = {
+            activeItem: this.props.items.filter((el) => el.active)
+        };
+    }
+
+    clickOnItem(e) {
+        this.setState({
+            activeItem: this.props.items.filter((el) => el.title == e.target.text)
+        });
+    }
+
     render(){
         let items = this.props.items.map((item, index) => {
-            return <MenuItem key={index} href={item.href}>{item.title}</MenuItem>;
+            return <MenuItem key={index} active={(this.state.activeItem.indexOf(item) != -1)} clickOnItem={this.clickOnItem} href={item.href}>{item.title}</MenuItem>;
         });
 
         return (

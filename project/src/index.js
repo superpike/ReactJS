@@ -6,6 +6,11 @@ import ModalWindow from './ModalWindow';
 
 
 class FullSite extends React.Component {
+    constructor() {
+        super();
+        alert("Задание 5 со *");
+    }
+
     render() {       
         return (
             <div>
