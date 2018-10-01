@@ -5,9 +5,13 @@ class MenuItem extends React.Component
 {
     render()
     {
+        let activeClass = "";
+        if (this.props.active) {
+            activeClass = " active";
+        }
         return (
             <li className="nav-item">
-                <a className="nav-link" href={this.props.href}>{this.props.children}</a>
+                <a className={"nav-link" + activeClass} href={this.props.href} onClick={this.props.clickOnItem}>{this.props.children}</a>
             </li>
         );
     }

@@ -15,9 +15,9 @@ class ModalWindow extends React.Component
                             </button>
                         </div>
                         <div className="modal-body">
-                            <label for="login">Имя пользователя: </label>
+                            <label htmlFor="login">Имя пользователя: </label>
                             <input type="text" name="login" id="login" placeholder="User name"/>
-                            <label for="pass">Пароль: </label>
+                            <label htmlFor="pass">Пароль: </label>
                             <input type="password" name="pass" id="pass" placeholder="Password"/>
                         </div>
                         <div className="modal-footer">
